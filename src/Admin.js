@@ -9,9 +9,7 @@ import './style/common.less';
 export default class Admin extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            description: '极简React片段！'
-        };
+        this.state = {};
     }
     render() {
         return (
@@ -19,7 +17,7 @@ export default class Admin extends React.Component {
                 <Col span="4" className="nav-left">
                     <NavLeft />
                 </Col>
-                <Col span={20}>
+                <Col span={20} className="main">
                     <Header />
                     <Footer />
                 </Col>

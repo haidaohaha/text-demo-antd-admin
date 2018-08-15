@@ -4,6 +4,7 @@ import { Row, Col } from 'antd';
 import NavLeft from './components/NavLeft';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Home from './pages/Home';
 
 import './style/common.less';
 export default class Admin extends React.Component {
@@ -18,8 +19,15 @@ export default class Admin extends React.Component {
                     <NavLeft />
                 </Col>
                 <Col span={20} className="main">
-                    <Header />
-                    <Footer />
+                    <Row>
+                        <Header />
+                    </Row>
+                    <Row className="content">
+                        <Home />
+                    </Row>
+                    <Row>
+                        <Footer />
+                    </Row>
                 </Col>
             </Row>
         );

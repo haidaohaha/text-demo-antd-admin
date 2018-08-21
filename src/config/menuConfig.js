@@ -33,11 +33,15 @@ const menuList = [
             },
             {
                 title: '图片画廊',
-                key: '/ui/gallery'
+                key: '/ui/gallerys'
             },
             {
                 title: '轮播图',
-                key: '/ui/carousel'
+                key: '/ui/carousels'
+            },
+            {
+                title: '字体图标',
+                key: '/ui/icons'
             }
         ]
     },

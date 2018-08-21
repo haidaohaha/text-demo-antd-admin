@@ -40,7 +40,7 @@ export default class Header extends React.Component {
 
         Axios.jsonp(url, options).then(
             value => {
-                console.log(value);
+                // console.log(value);
                 this.setState({
                     desc: value.weather_data[0].weather,
                     dayPictureUrl: value.weather_data[0].dayPictureUrl,

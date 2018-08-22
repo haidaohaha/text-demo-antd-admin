@@ -186,14 +186,14 @@ class RegistrationForm extends Component {
                         {...formItemLayout}
                         label={
                             <span>
-                                Nickname&nbsp;
+                                Nickname(昵称)&nbsp;
                                 <Tooltip title="What do you want others to call you?">
                                     <Icon type="question-circle-o" />
                                 </Tooltip>
                             </span>
                         }
                     >
-                        {getFieldDecorator('nickname(昵称)', {
+                        {getFieldDecorator('nickname', {
                             rules: [
                                 {
                                     required: true,

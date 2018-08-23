@@ -1,17 +1,22 @@
 import React from 'react';
-import { Card, Table } from 'antd';
+import { Card, Table, Modal } from 'antd';
 import Axios from './../../Axios';
+import Utils from './../../utils/utils';
 export default class TableBasic extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            description: '极简React片段！'
+            paginationPage: {}
+        };
+        this.params = {
+            page: 1
         };
     }
 
     componentDidMount() {
         this.processDataSource1();
         this.processDataSource2();
+        this.processDataSource3();
     }
 
     processDataSource2() {
@@ -31,6 +36,31 @@ export default class TableBasic extends React.Component {
             }
         });
     }
+    processDataSource3() {
+        let _this = this;
+        Axios.ajax({
+            method: 'GET',
+            url: '/table/pagelist',
+            data: {
+                params: {
+                    page: this.params.page
+                }
+            }
+        }).then(rst => {
+            if (rst.code === 0) {
+                const { list = [] } = rst.results;
+                this.setState({
+                    dataSource3: list.map((item, key) => ({ key, ...item })),
+                    paginationPage: Utils.pagination(rst.results, (page, pageSize) => {
+                        // console.log('vip-page', page);
+                        // console.log('vip-pageSize', pageSize);
+                        _this.params.page = page;
+                        this.processDataSource3();
+                    })
+                });
+            }
+        });
+    }
 
     onSelectChangeRadio = selectedRowKeys => {
         this.setState({ selectedRowKeys });
@@ -42,6 +72,10 @@ export default class TableBasic extends React.Component {
     handleClickShow(record) {
         // 简单写一写，具体情况具体对待
         this.setState({ selectedRowKeys: [record.key] });
+        Modal.info({
+            title: `姓名${record.userName}`,
+            content: `爱好：${record.interest}`
+        });
     }
 
     render() {
@@ -184,6 +218,15 @@ export default class TableBasic extends React.Component {
                                 onClick: this.handleClickShow.bind(this, record)
                             };
                         }}
+                    />
+                </Card>
+                <Card title="进阶表格 - 封装分页">
+                    <Table
+                        columns={columns}
+                        bordered
+                        rowKey="key"
+                        dataSource={this.state.dataSource3}
+                        pagination={this.state.paginationPage}
                     />
                 </Card>
             </div>

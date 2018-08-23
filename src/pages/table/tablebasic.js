@@ -52,8 +52,6 @@ export default class TableBasic extends React.Component {
                 this.setState({
                     dataSource3: list.map((item, key) => ({ key, ...item })),
                     paginationPage: Utils.pagination(rst.results, (page, pageSize) => {
-                        // console.log('vip-page', page);
-                        // console.log('vip-pageSize', pageSize);
                         _this.params.page = page;
                         this.processDataSource3();
                     })

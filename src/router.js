@@ -17,6 +17,7 @@ import Icons from './pages/ui/icons';
 import FormLogin from './pages/form/login';
 import FormRegister from './pages/form/register';
 import TableBasic from './pages/table/tablebasic';
+import TableHigh from './pages/table/tablehigh';
 import TableColor from './pages/table/tablecolor';
 
 export default class IRouter extends Component {
@@ -43,6 +44,7 @@ export default class IRouter extends Component {
                                     <Route path="/form/login" component={FormLogin} />
                                     <Route path="/form/reg" component={FormRegister} />
                                     <Route path="/table/basic" component={TableBasic} />
+                                    <Route path="/table/high" component={TableHigh} />
                                     <Route path="/table/color" component={TableColor} />
                                     <Redirect to="/home" />
                                     <Route component={NoMatch} />

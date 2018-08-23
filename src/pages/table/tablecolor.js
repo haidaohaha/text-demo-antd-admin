@@ -1,16 +1,14 @@
 import React from 'react';
 import { Card, Table } from 'antd';
-import Axios from './../../Axios';
-export default class TableBasic extends React.Component {
+import Axios from '../../Axios';
+import './tablecolor.less';
+export default class TableColor extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            description: '极简React片段！'
-        };
+        this.state = {};
     }
 
     componentDidMount() {
-        this.processDataSource1();
         this.processDataSource2();
     }
 
@@ -32,17 +30,30 @@ export default class TableBasic extends React.Component {
         });
     }
 
-    onSelectChangeRadio = selectedRowKeys => {
-        this.setState({ selectedRowKeys });
-    };
     onSelectChangeCheckbox = selectedRowKeys => {
         this.setState({ selectedRowKeys });
     };
 
-    handleClickShow(record) {
-        // 简单写一写，具体情况具体对待
-        this.setState({ selectedRowKeys: [record.key] });
-    }
+    onCell = record => {
+        if (record && !isNaN(record.interest)) {
+            switch (record.interest) {
+                case 1:
+                case 2:
+                    return { className: 'td_blue' };
+                case 3:
+                case 4:
+                    return { className: 'td_yellow' };
+                case 5:
+                case 6:
+                    return { className: 'td_orange' };
+                case 7:
+                case 8:
+                    return { className: 'td_red' };
+                default:
+                    return null;
+            }
+        }
+    };
 
     render() {
         const columns = [
@@ -83,6 +94,7 @@ export default class TableBasic extends React.Component {
                 title: '爱好',
                 key: 'interest',
                 dataIndex: 'interest',
+                onCell: this.onCell,
                 render(abc) {
                     let config = {
                         '1': '游泳',
@@ -116,52 +128,26 @@ export default class TableBasic extends React.Component {
 
         const { selectedRowKeys } = this.state; // 必须使用官方的 关键字 ， 否则会出现bug , 如清楚不了
 
-        const rowSelection = {
-            type: 'radio',
-            selectedRowKeys
-        };
-        const rowSelectionRadio = {
-            type: 'radio',
-            selectedRowKeys,
-            onChange: this.onSelectChangeRadio
-        };
         const rowSelectionCheckbox = {
-            type: 'checkbox',
+            type: 'checkbox', // 默认可不写
             selectedRowKeys,
             onChange: this.onSelectChangeCheckbox
         };
+
+        // const rowSelection = {
+        //     type: 'radio', // 默认可不写
+        //     selectedRowKeys
+        // };
 
         const paginationInfo = {
             showSizeChanger: true,
             showQuickJumper: true,
             pageSizeOptions: ['5', '10', '20', '30', '40', '50'],
-            defaultPageSize: 5
+            defaultPageSize: 15
         };
         return (
-            <div>
-                <Card title="基础表格">
-                    <Table columns={columns} bordered dataSource={this.state.dataSource1} />
-                </Card>
-                <Card title="进阶表格">
-                    <Table
-                        style={{ height: 380 }}
-                        pagination={{ pageSize: 2 }}
-                        columns={columns}
-                        bordered
-                        dataSource={this.state.dataSource2}
-                    />
-                </Card>
-                <Card title="进阶表格 - 单选">
-                    <Table
-                        columns={columns}
-                        rowSelection={rowSelectionRadio}
-                        pagination={paginationInfo}
-                        bordered
-                        rowKey={record => record.key}
-                        dataSource={this.state.dataSource2}
-                    />
-                </Card>
-                <Card title="进阶表格 - 多选">
+            <div className="tablecolor">
+                <Card title="多彩表格 - cell(单元格颜色自定义))" className="tablecolor-cell">
                     <Table
                         columns={columns}
                         rowSelection={rowSelectionCheckbox}
@@ -169,19 +155,25 @@ export default class TableBasic extends React.Component {
                         bordered
                         rowKey={record => record.key}
                         dataSource={this.state.dataSource2}
+                        onRow={record => {
+                            return {
+                                onClick: () => this.handleClickShow(record)
+                            };
+                        }}
                     />
                 </Card>
-                <Card title="进阶表格 - 行可点击">
+                <Card title="多彩表格 - row(鼠标点击行)" className="tablecolor-row">
                     <Table
                         columns={columns}
-                        rowSelection={rowSelection}
+                        // rowSelection={rowSelection}
                         pagination={paginationInfo}
                         bordered
-                        rowKey={record => record.key}
+                        rowKey="key"
+                        rowClassName={record => (record.cur ? 'cur' : '')}
                         dataSource={this.state.dataSource2}
                         onRow={record => {
                             return {
-                                onClick: this.handleClickShow.bind(this, record)
+                                onClick: () => this.handleClickShow(record)
                             };
                         }}
                     />
@@ -190,44 +182,14 @@ export default class TableBasic extends React.Component {
         );
     }
 
-    processDataSource1() {
-        const data = [
-            {
-                id: '0',
-                userName: 'Jack',
-                sex: '1',
-                state: '1',
-                interest: '1',
-                birthday: '2000-01-01',
-                address: '北京市海淀区奥林匹克公园',
-                time: '09:00'
-            },
-            {
-                id: '1',
-                userName: 'Tom',
-                sex: '1',
-                state: '1',
-                interest: '1',
-                birthday: '2000-01-01',
-                address: '北京市海淀区奥林匹克公园',
-                time: '09:00'
-            },
-            {
-                id: '2',
-                userName: 'Lily',
-                sex: '1',
-                state: '1',
-                interest: '1',
-                birthday: '2000-01-01',
-                address: '北京市海淀区奥林匹克公园',
-                time: '09:00'
-            }
-        ];
-        data.forEach((item, index) => {
-            item.key = index;
-        });
+    handleClickShow = record => {
+        const { dataSource2 } = this.state;
+        // 简单写一写，具体情况具体对待
         this.setState({
-            dataSource1: data
+            // selectedRowKeys: [record.key],  // 不能增加，不然会覆盖了样式 导致 cur 的样式 加载不出
+            dataSource2: dataSource2.map(
+                v => (record.key === v.key ? { ...v, cur: true } : { ...v, cur: false })
+            )
         });
-    }
+    };
 }

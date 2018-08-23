@@ -70,6 +70,10 @@ const menuList = [
             {
                 title: '高级表格',
                 key: '/table/high'
+            },
+            {
+                title: '彩色表格',
+                key: '/table/color'
             }
         ]
     },

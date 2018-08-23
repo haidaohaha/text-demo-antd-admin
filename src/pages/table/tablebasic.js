@@ -15,19 +15,20 @@ export default class TableBasic extends React.Component {
     }
 
     processDataSource2() {
-        // Axios.get('https://www.easy-mock.com/mock/5b7d1cc1a553b04aa3c92f7a/antd/table/list').then(
-        //     res => {
-        //         console.log('vip-res', res);
-        //     }
-        // );
-        
         Axios.ajax({
             method: 'GET',
-            url: '/table/list'
+            url: '/table/list',
+            data: {
+                params: {
+                    page: 1
+                }
+            }
         }).then(rst => {
-            this.setState({
-                dataSource2: rst.array.map((item, key) => ({ key, ...item }))
-            });
+            if (rst.code === 0) {
+                this.setState({
+                    dataSource2: rst.array.map((item, key) => ({ key, ...item }))
+                });
+            }
         });
     }
 

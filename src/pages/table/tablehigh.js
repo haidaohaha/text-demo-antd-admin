@@ -472,7 +472,7 @@ export default class TableHigh extends React.Component {
                         scroll={{ y: 240 }}
                     />
                 </Card>
-                <Card title="左侧固定" style={{ margin: '10px 0' }}>
+                <Card title="左侧固定 - (地址的字段重复，导致控制台报警告)" style={{ margin: '10px 0' }}>
                     <Table
                         columns={columns2}
                         pagination={{ pageSize: 5 }}

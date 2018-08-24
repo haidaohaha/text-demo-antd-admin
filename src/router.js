@@ -19,6 +19,7 @@ import FormRegister from './pages/form/register';
 import TableBasic from './pages/table/tablebasic';
 import TableHigh from './pages/table/tablehigh';
 import TableColor from './pages/table/tablecolor';
+import FormCity from './pages/city';
 
 export default class IRouter extends Component {
     render() {
@@ -46,6 +47,7 @@ export default class IRouter extends Component {
                                     <Route path="/table/basic" component={TableBasic} />
                                     <Route path="/table/high" component={TableHigh} />
                                     <Route path="/table/color" component={TableColor} />
+                                    <Route path="/city" component={FormCity} />
                                     <Redirect to="/home" />
                                     <Route component={NoMatch} />
                                 </Switch>

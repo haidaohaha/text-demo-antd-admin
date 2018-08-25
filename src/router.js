@@ -20,18 +20,36 @@ import TableBasic from './pages/table/tablebasic';
 import TableHigh from './pages/table/tablehigh';
 import TableColor from './pages/table/tablecolor';
 import FormCity from './pages/city';
+import Order from './pages/order';
+import OrderDetail from './pages/order/detail';
+
+import Common from './Common';
 
 export default class IRouter extends Component {
     render() {
         return (
             <Router>
                 <App>
-                    <Route path="/login" component={Login} />
-                    <Route
-                        path="/"
-                        render={() => (
-                            <Admin>
-                                <Switch>
+                    <Switch>
+                        <Route path="/login" component={Login} />
+                        <Route
+                            path="/common"
+                            render={() => (
+                                <Common>
+                                    {/* <Switch> */}
+                                    <Route path="/common/order/detail/:detailId" component={OrderDetail} />
+
+                                    {/* <Redirect to="/home" /> */}
+                                    {/* <Route component={NoMatch} /> */}
+                                    {/* </Switch> */}
+                                </Common>
+                            )}
+                        />
+
+                        <Route
+                            path="/"
+                            render={() => (
+                                <Admin>
                                     <Route path="/home" component={Home} />
                                     <Route path="/ui/buttons" component={Buttons} />
                                     <Route path="/ui/modals" component={Modals} />
@@ -48,12 +66,14 @@ export default class IRouter extends Component {
                                     <Route path="/table/high" component={TableHigh} />
                                     <Route path="/table/color" component={TableColor} />
                                     <Route path="/city" component={FormCity} />
-                                    <Redirect to="/home" />
-                                    <Route component={NoMatch} />
-                                </Switch>
-                            </Admin>
-                        )}
-                    />
+                                    <Route path="/order" component={Order} />
+                                </Admin>
+                            )}
+                        />
+
+                        {/* <Route component={NoMatch} /> */}
+                        <Redirect to="/home" />
+                    </Switch>
                 </App>
             </Router>
         );

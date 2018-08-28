@@ -38,10 +38,10 @@ export default class Axios {
                     const loading = document.getElementById('ajaxLoading');
                     loading.style.display = 'none';
                 }
-                
+
                 if (response.status === 200) {
                     const res = response.data;
-                    if (res.code === 0) {
+                    if (Number(res.code) === 0) {
                         resolve(res);
                     } else {
                         res.msg = '请求输出有误。';

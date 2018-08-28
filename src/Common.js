@@ -15,7 +15,7 @@ export default class Common extends React.Component {
         return (
             <Row className="">
                 <Row>
-                    <Header />
+                    <Header type />
                 </Row>
                 <Row className="content">
                     {/* this is content page. */}

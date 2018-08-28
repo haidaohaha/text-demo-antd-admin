@@ -56,21 +56,26 @@ export default class Header extends React.Component {
     render() {
         return (
             <div className="header">
-                <Row className="header-top">
-                    <span>欢迎，{this.state.adminName}</span>
+                <Row className={this.props.type?'header-top cur':'header-top'}>
+                    <span>
+                        欢迎，
+                        {this.state.adminName}
+                    </span>
                     <a href="">退出</a>
                 </Row>
-                <Row className="breadcrumb">
-                    <Col span={4} className="breadcrumb-title">
-                        首页
-                    </Col>
-                    <Col span={20} className="weather">
-                        <span className="date">{this.state.nowDate}</span>
-                        <img className="weather-img" src={this.state.dayPictureUrl} alt="" />
-                        <img className="weather-img" src={this.state.nightPictureUrl} alt="" />
-                        <span className="weather-detail">{this.state.desc}</span>
-                    </Col>
-                </Row>
+                {this.props.type ? null : (
+                    <Row className="breadcrumb">
+                        <Col span={4} className="breadcrumb-title">
+                            首页
+                        </Col>
+                        <Col span={20} className="weather">
+                            <span className="date">{this.state.nowDate}</span>
+                            <img className="weather-img" src={this.state.dayPictureUrl} alt="" />
+                            <img className="weather-img" src={this.state.nightPictureUrl} alt="" />
+                            <span className="weather-detail">{this.state.desc}</span>
+                        </Col>
+                    </Row>
+                )}
             </div>
         );
     }

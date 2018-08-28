@@ -8,17 +8,20 @@ import BaseForm from './../../components/BaseForm';
 const FormItem = Form.Item;
 
 export default class Order extends React.Component {
-    state = {
-        orderInfo: {},
-        orderConfirmVisble: false
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            orderInfo: {},
+            orderConfirmVisble: false
+        };
+    }
     params = {
         page: 1
     };
     formList = [
         {
             type: 'SELECT',
-            typeID:'1',
+            typeID: '1',
             label: '城市',
             field: 'city',
             placeholder: '全部',
@@ -33,12 +36,12 @@ export default class Order extends React.Component {
         },
         {
             type: '时间查询',
-            typeID:'2',
+            typeID: '2'
             // field: 'query_time',
         },
         {
             type: 'SELECT',
-            typeID:'3',
+            typeID: '3',
             label: '订单状态',
             field: 'order_status',
             placeholder: '全部',
@@ -98,7 +101,7 @@ export default class Order extends React.Component {
         }).then(res => {
             if (res.code == 0) {
                 this.setState({
-                    orderInfo: res.result,
+                    orderInfo: res.results,
                     orderConfirmVisble: true
                 });
             }

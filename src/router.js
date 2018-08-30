@@ -22,6 +22,7 @@ import TableColor from './pages/table/tablecolor';
 import FormCity from './pages/city';
 import Order from './pages/order';
 import OrderDetail from './pages/order/detail';
+import BikeMap from './pages/map/bikeMap';
 
 import Common from './Common';
 
@@ -67,6 +68,7 @@ export default class IRouter extends Component {
                                     <Route path="/table/color" component={TableColor} />
                                     <Route path="/city" component={FormCity} />
                                     <Route path="/order" component={Order} />
+                                    <Route path="/bikeMap" component={BikeMap} />
                                 </Admin>
                             )}
                         />

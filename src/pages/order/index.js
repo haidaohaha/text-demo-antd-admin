@@ -10,11 +10,12 @@ const FormItem = Form.Item;
 export default class Order extends React.Component {
     constructor(props) {
         super(props);
+        this.handleFilter = this.handleFilter.bind(this);
         this.state = {
             orderInfo: {},
             orderConfirmVisble: false
         };
-    }
+        }
     params = {
         page: 1
     };
@@ -54,10 +55,10 @@ export default class Order extends React.Component {
         this.requestList();
     }
 
-    handleFilter = params => {
+    handleFilter(params) {
         this.params = params;
         this.requestList();
-    };
+    }
     requestList = () => {
         let _this = this;
         Axios.ajax({

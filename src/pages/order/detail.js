@@ -85,7 +85,7 @@ export default class OrderDetail extends React.Component {
                 anchor: new window.BMap.Size(18, 42)
             });
 
-            let startMarker = new window.BMap.Marker(startPoint, { icon: startIcon });
+            let startMarker = new window.BMap.Marker(startPoint, { icon: startIcon, rotation: 30 });
             this.map.addOverlay(startMarker);
 
             endPoint = new window.BMap.Point(last.lon, last.lat);

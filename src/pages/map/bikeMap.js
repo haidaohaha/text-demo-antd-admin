@@ -102,8 +102,9 @@ export default class BikeMap extends React.Component {
             message: '晚上一起吃个饭吧？'
         };
         let infoWindow = new window.BMap.InfoWindow('', opts); // 创建信息窗口对象
-        this.map.addEventListener('click', () => {
-            this.map.openInfoWindow(infoWindow, endPoint); //开启信息窗口
+        const _this = this;
+        this.map.addEventListener('click', function() {
+            _this.map.openInfoWindow(infoWindow, endPoint); //开启信息窗口
         });
 
         let routeList = [];

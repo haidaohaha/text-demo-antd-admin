@@ -18,9 +18,9 @@ export default class FormLogin extends Component {
     };
 
     rulesCallback(rule, value, callback) {
-        console.log('vip-rule', rule);
-        console.log('vip-value', value);
-        console.log('vip-callback', callback);
+        // console.log('vip-rule', rule);
+        // console.log('vip-value', value);
+        // console.log('vip-callback', callback);
         callback();
     }
 
@@ -37,55 +37,36 @@ export default class FormLogin extends Component {
     };
 
     render() {
-        const {
-            getFieldDecorator,
-            getFieldsError,
-            getFieldError,
-            isFieldTouched
-        } = this.props.form;
+        const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form;
         const userNameError = isFieldTouched('userName') && getFieldError('userName');
         const passwordError = isFieldTouched('password') && getFieldError('password');
         return (
             <div>
                 <Card title="登陆 - 行内表单">
                     <Form layout="inline" onSubmit={this.handleSubmit}>
-                        <FormItem
-                            validateStatus={userNameError ? 'error' : ''}
-                            help={userNameError || ''}
-                        >
+                        <FormItem validateStatus={userNameError ? 'error' : ''} help={userNameError || ''}>
                             {getFieldDecorator('userName', {
                                 rules: [{ required: true, message: 'Please input your username!' }]
                             })(
                                 <Input
-                                    prefix={
-                                        <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />
-                                    }
+                                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     placeholder="Username"
                                 />
                             )}
                         </FormItem>
-                        <FormItem
-                            validateStatus={passwordError ? 'error' : ''}
-                            help={passwordError || ''}
-                        >
+                        <FormItem validateStatus={passwordError ? 'error' : ''} help={passwordError || ''}>
                             {getFieldDecorator('password', {
                                 rules: [{ required: true, message: 'Please input your Password!' }]
                             })(
                                 <Input
-                                    prefix={
-                                        <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />
-                                    }
+                                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     type="password"
                                     placeholder="Password"
                                 />
                             )}
                         </FormItem>
                         <FormItem>
-                            <Button
-                                type="primary"
-                                htmlType="submit"
-                                disabled={this.hasErrors(getFieldsError())}
-                            >
+                            <Button type="primary" htmlType="submit" disabled={this.hasErrors(getFieldsError())}>
                                 Log in
                             </Button>
                         </FormItem>
@@ -114,9 +95,7 @@ export default class FormLogin extends Component {
                                 ]
                             })(
                                 <Input
-                                    prefix={
-                                        <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />
-                                    }
+                                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     placeholder="Username"
                                 />
                             )}
@@ -126,9 +105,7 @@ export default class FormLogin extends Component {
                                 rules: [{ required: true, message: 'Please input your Password!' }]
                             })(
                                 <Input
-                                    prefix={
-                                        <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />
-                                    }
+                                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     type="password"
                                     placeholder="Password"
                                 />

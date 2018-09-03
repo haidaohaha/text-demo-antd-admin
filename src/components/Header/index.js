@@ -3,6 +3,11 @@ import { Row, Col } from 'antd';
 import './index.less';
 import Util from '../../utils/utils';
 import Axios from '../../Axios';
+import { connect } from 'react-redux';
+@connect(
+    state => state,
+    null
+)
 export default class Header extends React.Component {
     constructor(props) {
         super(props);
@@ -56,7 +61,7 @@ export default class Header extends React.Component {
     render() {
         return (
             <div className="header">
-                <Row className={this.props.type?'header-top cur':'header-top'}>
+                <Row className={this.props.type ? 'header-top cur' : 'header-top'}>
                     <span>
                         欢迎，
                         {this.state.adminName}
@@ -66,7 +71,7 @@ export default class Header extends React.Component {
                 {this.props.type ? null : (
                     <Row className="breadcrumb">
                         <Col span={4} className="breadcrumb-title">
-                            首页
+                            {this.props.menuName}
                         </Col>
                         <Col span={20} className="weather">
                             <span className="date">{this.state.nowDate}</span>

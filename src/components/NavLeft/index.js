@@ -3,14 +3,22 @@ import { Link } from 'react-router-dom';
 import { Menu, Switch } from 'antd';
 import './index.less';
 import menuList from '../../config/menuConfig';
-
+import { connect } from 'react-redux';
+import { switchMenu } from './../../redux/action';
 const SubMenu = Menu.SubMenu;
+
+@connect(
+    state => state,
+    {
+        switchMenu
+    }
+)
 export default class NavLeft extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             theme: 'dark',
-            current: '1',
+            current: '/home',
             menuTreeNode: []
         };
     }
@@ -32,6 +40,22 @@ export default class NavLeft extends React.Component {
         console.log('click ', e);
         this.setState({
             current: e.key
+        });
+
+        // this.props.switchMenu(e.item.props.title);
+
+        this.props.switchMenu({
+            menuName: e.item.props.title,
+            menuPath: e.item.props.eventKey
+        });
+    };
+    handleClickLogo = () => {
+        this.setState({
+            current: '/home'
+        });
+        this.props.switchMenu({
+            menuName: '首页',
+            menuPath: '/home'
         });
     };
 
@@ -58,12 +82,16 @@ export default class NavLeft extends React.Component {
     render() {
         return (
             <div>
-                <div className="logo">
+                <div
+                    className="logo"
+                    //  onClick={this.handleClickLogo}
+                >
                     <img src="/assets/logo.svg" alt="" />
                     <h1>AntD Admin</h1>
                 </div>
                 <Menu
-                    onClick={this.handleClick.bind(this)}
+                    defaultSelectedKeys={[this.state.current]}
+                    onClick={this.handleClick}
                     mode="vertical"
                     theme={this.state.theme}
                 >

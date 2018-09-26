@@ -4,15 +4,17 @@ import './index.less';
 import Util from '../../utils/utils';
 import Axios from '../../Axios';
 import { connect } from 'react-redux';
+import Cookies from 'js-cookie';
+import { withRouter } from 'react-router-dom';
+@withRouter
 @connect(
-    state => state,
+    state => ({ ...state.ebikeData, ...state.updateLoading }),
     null
 )
 export default class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            adminName: '海盗呼呼',
             desc: '',
             dayPictureUrl: '',
             nightPictureUrl: ''
@@ -22,10 +24,20 @@ export default class Header extends React.Component {
     componentDidMount() {
         this.getNowDate();
         this.getWeather();
+
+        this.setState({
+            userName: Cookies.get('userName')
+        });
+    }
+
+    componentWillUnmount() {
+        if (this.timeTicket) {
+            clearInterval(this.timeTicket);
+        }
     }
 
     getNowDate() {
-        setInterval(() => {
+        this.timeTicket = setInterval(() => {
             const nowDate = Util.formateDate(new Date());
             this.setState({
                 nowDate
@@ -58,15 +70,23 @@ export default class Header extends React.Component {
         );
     }
 
+    logout = () => {
+        Cookies.remove('JSESSIONID', { path: '/' });
+        Cookies.remove('userName', { path: '/' });
+        this.props.history.replace('/login');
+    };
+
     render() {
         return (
             <div className="header">
                 <Row className={this.props.type ? 'header-top cur' : 'header-top'}>
                     <span>
                         欢迎，
-                        {this.state.adminName}
+                        {this.state.userName}
                     </span>
-                    <a href="">退出</a>
+                    <a href="" onClick={this.logout}>
+                        退出
+                    </a>
                 </Row>
                 {this.props.type ? null : (
                     <Row className="breadcrumb">

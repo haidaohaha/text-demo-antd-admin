@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter, BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
+import { HashRouter, BrowserRouter as Router, Route, Link, Switch, Redirect, withRouter } from 'react-router-dom';
 import App from './App';
 import Admin from './Admin';
 import Home from './pages/Home';
@@ -23,9 +23,7 @@ import FormCity from './pages/city';
 import Order from './pages/order';
 import OrderDetail from './pages/order/detail';
 import BikeMap from './pages/map/bikeMap';
-
 import Common from './Common';
-
 export default class IRouter extends Component {
     render() {
         return (
@@ -74,7 +72,7 @@ export default class IRouter extends Component {
                         />
 
                         {/* <Route component={NoMatch} /> */}
-                        <Redirect to="/home" />
+                        {/* <Redirect to="/home" /> */}
                     </Switch>
                 </App>
             </Router>

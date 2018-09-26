@@ -1,14 +1,10 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import reducer from './../reducer/toduMenu';
+import reducer from './../reducer';
 
 import { composeWithDevTools } from 'redux-devtools-extension';
-const initialState = window.config || { menuName: '首页'};
+const initialState = window.config || { ebikeData: { menuName: '首页' } };
 
-const  configureStore = () => createStore(
-    reducer,
-    initialState,
-    composeWithDevTools(applyMiddleware(thunk))
-);
+const configureStore = () => createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunk)));
 
 export default configureStore;

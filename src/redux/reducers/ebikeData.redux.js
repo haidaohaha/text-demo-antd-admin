@@ -1,9 +1,7 @@
 import { type } from './../action';
 
-const initState = {
-    menuName: '首页'
-};
-// What is not so important
+const initState = { ebikeData: { menuName: '首页' } };
+
 const ebikeData = (state = initState, action) => {
     switch (action.type) {
         case type.SWITCH_MENU:

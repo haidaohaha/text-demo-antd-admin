@@ -8,7 +8,6 @@ import { Provider } from 'react-redux';
 import configureStore from './redux/store/configureStore';
 
 const store = configureStore();
-console.log('svip-初始化', store);
 
 ReactDOM.render(
     <Provider store={store}>

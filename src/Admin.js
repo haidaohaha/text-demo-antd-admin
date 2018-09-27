@@ -7,20 +7,42 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 
 import './style/common.less';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { actions } from './common/store';
+@connect(
+    state => {
+        const {
+            rootReducer: { menuName }
+        } = state;
+        return { menuName };
+    },
+    dispatch => {
+        return {
+            actions: bindActionCreators(actions, dispatch)
+        };
+    }
+)
 export default class Admin extends React.Component {
     constructor(props) {
         super(props);
+        console.log('svip-props', this.props);
+
         this.state = {};
     }
     render() {
+        const {
+            menuName = '',
+            actions: { getMenuName }
+        } = this.props;
         return (
             <Row className="container">
                 <Col span="4" className="nav-left">
-                    <NavLeft />
+                    <NavLeft getMenuName={getMenuName} />
                 </Col>
                 <Col span={20} className="main">
                     <Row>
-                        <Header />
+                        <Header menuName={menuName} getMenuName={getMenuName} />
                     </Row>
                     <Row className="content">
                         {/* <Home /> */}

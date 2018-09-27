@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { HashRouter, BrowserRouter as Router, Route, Link, Switch, Redirect, withRouter } from 'react-router-dom';
 import App from './App';
 import Admin from './Admin';
-import Home from './pages/Home';
+// import Home from './pages/Home';
 import NoMatch from './pages/NoMatch';
-import Login from './pages/Login/login';
+// import Login from './pages/Login/login';
 import Buttons from './pages/ui/buttons';
 import Modals from './pages/ui/modals';
 import Loadings from './pages/ui/loadings';
@@ -25,7 +25,21 @@ import OrderDetail from './pages/order/detail';
 import BikeMap from './pages/map/bikeMap';
 import Common from './Common';
 export default class IRouter extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+    async componentDidMount() {
+        const { default: Home } = await import('./pages/Home');
+        const { default: Login } = await import('./pages/Login/login');
+        this.setState({
+            Home,
+            Login
+        });
+    }
+
     render() {
+        const { Home, Login } = this.state;
         return (
             <Router>
                 <App>
@@ -35,12 +49,7 @@ export default class IRouter extends Component {
                             path="/common"
                             render={() => (
                                 <Common>
-                                    {/* <Switch> */}
                                     <Route path="/common/order/detail/:detailId" component={OrderDetail} />
-
-                                    {/* <Redirect to="/home" /> */}
-                                    {/* <Route component={NoMatch} /> */}
-                                    {/* </Switch> */}
                                 </Common>
                             )}
                         />
@@ -70,9 +79,6 @@ export default class IRouter extends Component {
                                 </Admin>
                             )}
                         />
-
-                        {/* <Route component={NoMatch} /> */}
-                        {/* <Redirect to="/home" /> */}
                     </Switch>
                 </App>
             </Router>

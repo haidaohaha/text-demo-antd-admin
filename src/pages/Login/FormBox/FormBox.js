@@ -3,11 +3,18 @@ import { Form, Input, Button, Icon } from 'antd';
 import { connect } from 'react-redux';
 import { clickUpdateLoading } from './../../../redux/action';
 
+import { bindActionCreators } from 'redux';
+import { actions } from '../store/store';
 const FormItem = Form.Item;
 @connect(
-    state => state,
-    {
-        clickUpdateLoading
+    state => {
+        const { login: { loading = false } = {} } = state;
+        return { loading };
+    },
+    dispatch => {
+        return {
+            actions: bindActionCreators(actions, dispatch)
+        };
     }
 )
 class FromBox extends Component {
@@ -17,12 +24,15 @@ class FromBox extends Component {
     }
     handleSubmit = e => {
         e.preventDefault();
-        let { clickUpdateLoading, form } = this.props;
+        let {
+            actions: { clickUpdateLoading },
+            form
+        } = this.props;
         this.props.submit(form, clickUpdateLoading);
     };
     render() {
         const { getFieldDecorator } = this.props.form;
-        const { loading = false } = this.props.updateLoading;
+        const { loading = false } = this.props;
 
         return (
             <Form onSubmit={this.handleSubmit}>

@@ -7,10 +7,6 @@ import { connect } from 'react-redux';
 import Cookies from 'js-cookie';
 import { withRouter } from 'react-router-dom';
 @withRouter
-@connect(
-    state => ({ ...state.ebikeData, ...state.updateLoading }),
-    null
-)
 export default class Header extends React.Component {
     constructor(props) {
         super(props);
@@ -74,6 +70,7 @@ export default class Header extends React.Component {
         Cookies.remove('JSESSIONID', { path: '/' });
         Cookies.remove('userName', { path: '/' });
         this.props.history.replace('/login');
+        this.props.getMenuName('');
     };
 
     render() {

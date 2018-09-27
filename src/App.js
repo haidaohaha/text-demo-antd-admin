@@ -7,7 +7,6 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.pathname = this.props.location.pathname;
-        console.log('svip-pathname', this.pathname);
     }
     checkJsessionID = () => {
         if (this.props.location.pathname != '/login') {

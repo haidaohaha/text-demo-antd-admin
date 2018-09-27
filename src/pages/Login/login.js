@@ -6,19 +6,29 @@ import Cookies from 'js-cookie';
 import { connect } from 'react-redux';
 import { clickUpdateLoading, updateName } from './../../redux/action';
 
+import { default as reducer } from './store/store';
+import { injectReducer } from '../../store';
+
 import './login.less';
+import { bindActionCreators } from 'redux';
+import { actions } from './store/store';
 
 @connect(
     state => state,
-    {
-        clickUpdateLoading,
-        updateName
+    dispatch => {
+        return {
+            actions: bindActionCreators(actions, dispatch)
+        };
     }
 )
 class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+    }
+
+    componentDidMount() {
+        injectReducer('login', reducer);
     }
 
     submit = (form, updateLoading) => {
@@ -34,7 +44,10 @@ class Login extends Component {
                         let session = CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA1(message, key));
                         Cookies.set('JSESSIONID', session, { expires: 1, path: '/' });
                         Cookies.set('userName', userName, { expires: 1, path: '/' });
-                        this.props.updateName(userName);
+                        const {
+                            actions: { updateName }
+                        } = this.props;
+                        updateName(userName);
                         this.props.history.push('/home');
                     } else {
                         message.error('账号：admin ； 密码：123456');

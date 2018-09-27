@@ -7,12 +7,6 @@ import { connect } from 'react-redux';
 import { switchMenu } from './../../redux/action';
 const SubMenu = Menu.SubMenu;
 
-@connect(
-    state => state,
-    {
-        switchMenu
-    }
-)
 export default class NavLeft extends React.Component {
     constructor(props) {
         super(props);
@@ -41,22 +35,7 @@ export default class NavLeft extends React.Component {
         this.setState({
             current: e.key
         });
-
-        // this.props.switchMenu(e.item.props.title);
-
-        this.props.switchMenu({
-            menuName: e.item.props.title,
-            menuPath: e.item.props.eventKey
-        });
-    };
-    handleClickLogo = () => {
-        this.setState({
-            current: '/home'
-        });
-        this.props.switchMenu({
-            menuName: '首页',
-            menuPath: '/home'
-        });
+        this.props.getMenuName(e.item.props.title);
     };
 
     renderMenu(data) {
@@ -82,10 +61,7 @@ export default class NavLeft extends React.Component {
     render() {
         return (
             <div>
-                <div
-                    className="logo"
-                    //  onClick={this.handleClickLogo}
-                >
+                <div className="logo">
                     <img src="/assets/logo.svg" alt="" />
                     <h1>AntD Admin</h1>
                 </div>

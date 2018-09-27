@@ -5,9 +5,9 @@ import IRouter from './router';
 import registerServiceWorker from './registerServiceWorker';
 
 import { Provider } from 'react-redux';
-import configureStore from './redux/store/configureStore';
-
-const store = configureStore();
+// import configureStore from './redux/store/configureStore';
+import { default as store } from 'src/store';
+// const store = configureStore();
 
 ReactDOM.render(
     <Provider store={store}>

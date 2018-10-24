@@ -126,6 +126,10 @@ const menuList = [
         ]
     },
     {
+        title: '404',
+        key: '/404'
+    },
+    {
         title: '权限设置',
         key: '/permission'
     }

@@ -76,6 +76,7 @@ export default class IRouter extends Component {
                                     <Route path="/city" component={FormCity} />
                                     <Route path="/order" component={Order} />
                                     <Route path="/bikeMap" component={BikeMap} />
+                                    <Route path="/404" component={NoMatch} />
                                 </Admin>
                             )}
                         />

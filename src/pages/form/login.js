@@ -4,7 +4,7 @@ import './login.less';
 
 const FormItem = Form.Item;
 @Form.create()
-export default class FormLogin extends Component {
+class FormLogin extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -130,3 +130,4 @@ export default class FormLogin extends Component {
         );
     }
 }
+export default FormLogin;

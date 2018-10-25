@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import Cookies from 'js-cookie';
 import { withRouter } from 'react-router-dom';
 @withRouter
-export default class Header extends React.Component {
+class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -102,3 +102,5 @@ export default class Header extends React.Component {
         );
     }
 }
+
+export default Header

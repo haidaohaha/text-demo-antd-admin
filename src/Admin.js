@@ -23,7 +23,7 @@ import { actions } from './common/store';
         };
     }
 )
-export default class Admin extends React.Component {
+class Admin extends React.Component {
     constructor(props) {
         super(props);
         console.log('svip-props', this.props);
@@ -56,3 +56,4 @@ export default class Admin extends React.Component {
         );
     }
 }
+export default Admin;

@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { Menu, Switch } from 'antd';
 import './index.less';
 import menuList from '../../config/menuConfig';
-import { connect } from 'react-redux';
-import { switchMenu } from './../../redux/action';
 const SubMenu = Menu.SubMenu;
 
 export default class NavLeft extends React.Component {

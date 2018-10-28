@@ -1,7 +1,6 @@
 import React from 'react';
-import { Row, Col, Card } from 'antd';
+import { Card } from 'antd';
 import Axios from '../../Axios';
-import Utils from '../../utils/utils';
 import './detail.less';
 export default class OrderDetail extends React.Component {
     constructor(props) {
@@ -73,7 +72,6 @@ export default class OrderDetail extends React.Component {
 
     // 绘制用户的行驶路线
     drawBikeRoute = positionList => {
-        let map = this.map;
         let startPoint = '';
         let endPoint = '';
         if (positionList.length > 0) {
@@ -190,6 +188,6 @@ export default class OrderDetail extends React.Component {
     }
 }
 
-function Map() {
-    return <div>地图</div>;
-}
+// function Map() {
+//     return <div>地图</div>;
+// }

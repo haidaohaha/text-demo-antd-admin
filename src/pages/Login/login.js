@@ -4,7 +4,6 @@ import CryptoJS from 'crypto-js';
 import FormBox from './FormBox/FormBox';
 import Cookies from 'js-cookie';
 import { connect } from 'react-redux';
-import { clickUpdateLoading, updateName } from './../../redux/action';
 
 import { default as reducer } from './store/store';
 import { injectReducer } from '../../store';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Form } from 'antd';
+import { Card } from 'antd';
 import axios from '../../Axios';
 import BaseForm from '../../components/BaseForm';
 export default class BikeMap extends React.Component {

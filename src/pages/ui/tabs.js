@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, notification, Icon, message, Tabs } from 'antd';
+import { Card, Icon, Tabs } from 'antd';
 const TabPane = Tabs.TabPane;
 
 export default class MyTabs extends Component {

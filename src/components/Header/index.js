@@ -3,7 +3,6 @@ import { Row, Col } from 'antd';
 import './index.less';
 import Util from '../../utils/utils';
 import Axios from '../../Axios';
-import { connect } from 'react-redux';
 import Cookies from 'js-cookie';
 import { withRouter } from 'react-router-dom';
 @withRouter

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { HashRouter, BrowserRouter as Router, Route, Link, Switch, Redirect, withRouter } from 'react-router-dom';
+// import { HashRouter, BrowserRouter as Router, Route, Link, Switch, Redirect, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import App from './App';
 import Admin from './Admin';
 // import Home from './pages/Home';

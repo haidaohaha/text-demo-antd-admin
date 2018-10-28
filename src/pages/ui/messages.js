@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, notification, Icon, message } from 'antd';
+import { Card, Button, message } from 'antd';
 
 export default class Messages extends Component {
     constructor(props) {
@@ -37,10 +37,7 @@ export default class Messages extends Component {
         return (
             <div>
                 <Card title="通知提醒框">
-                    <Button
-                        type="primary"
-                        onClick={() => this.openMessagesWithIcon('success', 100)}
-                    >
+                    <Button type="primary" onClick={() => this.openMessagesWithIcon('success', 100)}>
                         显示的位置为100
                     </Button>
                     <Button type="primary" onClick={() => this.openMessagesWithIcon('success', 50)}>

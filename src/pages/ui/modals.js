@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, Icon, Modal } from 'antd';
+import { Card, Button, Modal } from 'antd';
 import './modals.less';
 export default class Modals extends Component {
     constructor(props) {

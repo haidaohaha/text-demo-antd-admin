@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, Button, notification, Icon, message, Tabs, Modal } from 'antd';
+import { Row, Col, Card, Modal } from 'antd';
 const { Meta } = Card;
 
 export default class Gallerys extends Component {

@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Input, Button, Icon } from 'antd';
 import { connect } from 'react-redux';
-import { clickUpdateLoading } from './../../../redux/action';
-
 import { bindActionCreators } from 'redux';
 import { actions } from '../store/store';
 const FormItem = Form.Item;

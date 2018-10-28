@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Table, Form, Select, Modal, DatePicker, message } from 'antd';
+import { Card, Button, Table, Form, Modal, message } from 'antd';
 import Axios from '../../Axios';
 import Utils from '../../utils/utils';
 
@@ -15,7 +15,7 @@ export default class Order extends React.Component {
             orderInfo: {},
             orderConfirmVisble: false
         };
-        }
+    }
     params = {
         page: 1
     };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, Row } from 'antd';
+import { Card, Row } from 'antd';
 
 import { FaBeer } from 'react-icons/fa';
 import { Icon } from 'react-fa';

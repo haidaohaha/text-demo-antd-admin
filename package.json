@@ -78,9 +78,17 @@
         "build": "node scripts/build.js",
         "test": "node scripts/test.js"
     },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
+"eslintConfig": {
+    "extends": "react-app",
+    "rules": {
+        "eqeqeq": [
+            "off"
+        ],
+        "semi": [
+            0
+        ]
+    }
+},
     "browserslist": [
         ">0.2%",
         "not dead",

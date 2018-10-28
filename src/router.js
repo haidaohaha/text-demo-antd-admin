@@ -24,6 +24,7 @@ import FormCity from './pages/city';
 import Order from './pages/order';
 import OrderDetail from './pages/order/detail';
 import BikeMap from './pages/map/bikeMap';
+import Motion from './pages/motion/motion';
 import Common from './Common';
 export default class IRouter extends Component {
     constructor(props) {
@@ -78,6 +79,7 @@ export default class IRouter extends Component {
                                     <Route path="/order" component={Order} />
                                     <Route path="/bikeMap" component={BikeMap} />
                                     <Route path="/404" component={NoMatch} />
+                                    <Route path="/motion" component={Motion} />
                                 </Admin>
                             )}
                         />

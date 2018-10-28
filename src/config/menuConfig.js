@@ -132,6 +132,10 @@ const menuList = [
     {
         title: '权限设置',
         key: '/permission'
+    },
+    {
+        title: '动画组件',
+        key: '/motion'
     }
 ];
 export default menuList;

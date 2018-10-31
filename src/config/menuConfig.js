@@ -136,6 +136,10 @@ const menuList = [
     {
         title: '动画组件',
         key: '/motion'
+    },
+    {
+        title: 'React16',
+        key: '/react16'
     }
 ];
 export default menuList;

@@ -25,6 +25,8 @@ import Order from './pages/order';
 import OrderDetail from './pages/order/detail';
 import BikeMap from './pages/map/bikeMap';
 import Motion from './pages/motion/motion';
+import React16 from './pages/React16/React16';
+
 import Common from './Common';
 export default class IRouter extends Component {
     constructor(props) {
@@ -80,6 +82,7 @@ export default class IRouter extends Component {
                                     <Route path="/bikeMap" component={BikeMap} />
                                     <Route path="/404" component={NoMatch} />
                                     <Route path="/motion" component={Motion} />
+                                    <Route path="/react16" component={React16} />
                                 </Admin>
                             )}
                         />

@@ -9,9 +9,16 @@ import { Provider } from 'react-redux';
 import { default as store } from './store';
 // const store = configureStore();
 
+// 全局中文
+import { LocaleProvider } from 'antd';
+import zh_CN from 'antd/lib/locale-provider/zh_CN';
+import 'moment/locale/zh-cn';
+
 ReactDOM.render(
     <Provider store={store}>
-        <IRouter />
+        <LocaleProvider locale={zh_CN}>
+            <IRouter />
+        </LocaleProvider>
     </Provider>,
     document.getElementById('root')
 );

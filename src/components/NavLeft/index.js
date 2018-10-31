@@ -3,20 +3,23 @@ import { Link } from 'react-router-dom';
 import { Menu, Switch } from 'antd';
 import './index.less';
 import menuList from '../../config/menuConfig';
+import { withRouter } from 'react-router-dom';
 const SubMenu = Menu.SubMenu;
-
-export default class NavLeft extends React.Component {
+@withRouter
+class NavLeft extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             theme: 'dark',
-            current: '/home',
+            current: this.props.location.pathname === '/' ? '/home' : this.props.location.pathname,
             menuTreeNode: []
         };
     }
 
     componentDidMount() {
         const menuTreeNode = this.renderMenu(menuList);
+        const title = menuTreeNode.find(({ key }) => key === this.state.current).props.title || '首页';
+        this.props.getMenuName(title);
         this.setState({
             menuTreeNode
         });
@@ -29,7 +32,6 @@ export default class NavLeft extends React.Component {
     };
 
     handleClick = e => {
-        console.log('click ', e);
         this.setState({
             current: e.key
         });
@@ -81,3 +83,5 @@ export default class NavLeft extends React.Component {
         );
     }
 }
+
+export default NavLeft;

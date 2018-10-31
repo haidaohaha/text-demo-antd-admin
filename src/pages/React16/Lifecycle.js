@@ -14,6 +14,7 @@ class Lifecycle extends React.Component {
     // 因为该函数是静态函数，所以取不到 `this`
     // 如果需要对比 `prevProps` 需要单独在 `state` 中维护
     static getDerivedStateFromProps(nextProps, prevState) {
+        console.log('this', this); // unndefined
         console.log('svip-新API 用于代替 componentWillReceiveProps');
         return null;
     }

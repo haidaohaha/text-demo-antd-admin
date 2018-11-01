@@ -1,4 +1,5 @@
 import React from 'react';
+import { Divider } from 'antd';
 import './index.less';
 export default class Footer extends React.Component {
     constructor(props) {
@@ -10,7 +11,15 @@ export default class Footer extends React.Component {
     render() {
         return (
             <div className="footer">
-                ©2018 海盗公司 隐私政策 服务条款 京ICP证080268号 京公网安备110108003898号
+                ©2018
+                <Divider type="vertical" />
+                <a href="https://github.com/haidaohaha" target="_black">
+                    我的GitHub
+                </a>
+                <Divider type="vertical" />
+                <a href="https://haidaohaha.github.io/" target="_black">
+                    我的Blog
+                </a>
             </div>
         );
     }

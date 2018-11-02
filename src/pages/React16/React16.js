@@ -9,6 +9,8 @@ import ReactStrictMode from './ReactStrictMode';
 import Portal from './Portal';
 import ReactForWardRef from './ReactForWardRef';
 
+import Demo from './Demo';
+
 import KnowState from './Know-State';
 
 class React16 extends React.Component {
@@ -115,8 +117,8 @@ class React16 extends React.Component {
                 </Row>
                 <Row gutter={16} style={{ marginBottom: '20px' }}>
                     <Col span={12}>
-                        <Card title=" 待定 " bordered={false}>
-                            待定
+                        <Card title=" 面试题（多看看） " bordered={false}>
+                            <Demo />
                         </Card>
                     </Col>
                     <Col span={12}>

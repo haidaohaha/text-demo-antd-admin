@@ -22,4 +22,20 @@
 ```   
 
 ## 增加动画组件使用  
-[Ant Motion](https://motion.ant.design/api/tween-one)
+[Ant Motion](https://motion.ant.design/api/tween-one)  
+
+## 性能 文件结构可视化，找出导致体积过大的原因  
+    npm install --save-dev webpack-bundle-analyzer   
+
+当时看到的时候，感觉很牛啊，这都能分析出来，看起很炫，可以看出文件的大小位置等信息。    
+
+### 使用：  
+    const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;  
+    module.exports = {  
+    plugins: [  
+        new BundleAnalyzerPlugin()  
+    ]  
+    }...  
+
+
+

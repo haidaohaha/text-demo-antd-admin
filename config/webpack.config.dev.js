@@ -12,7 +12,7 @@ const paths = require('./paths');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; 
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -406,8 +406,8 @@ module.exports = {
         new ManifestPlugin({
             fileName: 'asset-manifest.json',
             publicPath: publicPath
-        }),
-        new BundleAnalyzerPlugin()
+        })
+        // new BundleAnalyzerPlugin() // 文件结构可视化 插件
     ],
 
     // Some libraries import Node modules but don't use them in the browser.

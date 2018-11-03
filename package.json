@@ -92,6 +92,9 @@
             ],
             "jsx-a11y/anchor-is-valid": [
                 0
+            ],
+            "experimentalDecorators": [
+                0
             ]
         }
     },

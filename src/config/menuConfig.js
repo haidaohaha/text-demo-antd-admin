@@ -140,6 +140,10 @@ const menuList = [
     {
         title: 'React16',
         key: '/react16'
+    },
+    {
+        title: '高阶组件',
+        key: '/highComponent'
     }
 ];
 export default menuList;
